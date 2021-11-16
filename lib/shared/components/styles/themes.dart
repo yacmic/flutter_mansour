@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import 'colors.dart';
+
 ThemeData lightTheme = ThemeData(
-  primarySwatch: Colors.deepOrange,
+  primarySwatch: defaultColor,
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: const AppBarTheme(
       titleSpacing: 20.0,
+
       //backwardsCompatibility: false,
       titleTextStyle: TextStyle(
           color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.bold),
@@ -24,7 +27,7 @@ ThemeData lightTheme = ThemeData(
     backgroundColor: Colors.white,
   ),
   floatingActionButtonTheme:
-      const FloatingActionButtonThemeData(backgroundColor: Colors.deepOrange),
+      const FloatingActionButtonThemeData(backgroundColor: defaultColor),
   textTheme: const TextTheme(
     bodyText1: TextStyle(
       fontSize: 18.0,
@@ -32,9 +35,10 @@ ThemeData lightTheme = ThemeData(
       color: Colors.black,
     ),
   ),
+  fontFamily: 'FiraCode',
 );
 ThemeData darkTheme = ThemeData(
-  primarySwatch: Colors.deepOrange,
+  primarySwatch: defaultColor,
   scaffoldBackgroundColor: HexColor('333739'),
   appBarTheme: AppBarTheme(
     titleSpacing: 20.0,
@@ -51,13 +55,13 @@ ThemeData darkTheme = ThemeData(
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     type: BottomNavigationBarType.fixed,
-    selectedItemColor: Colors.deepOrange,
+    selectedItemColor: defaultColor,
     unselectedItemColor: Colors.grey,
     elevation: 20.0,
     backgroundColor: HexColor('333739'),
   ),
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
-    backgroundColor: Colors.deepOrange,
+    backgroundColor: defaultColor,
   ),
   textTheme: const TextTheme(
     bodyText1: TextStyle(
@@ -66,4 +70,5 @@ ThemeData darkTheme = ThemeData(
       color: Colors.white,
     ),
   ),
+  fontFamily: 'FiraCode',
 );

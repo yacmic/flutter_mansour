@@ -1,20 +1,15 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:udemy_flutter/modules/shop_app/on_boarding/on_boarding_screen.dart';
 import 'package:udemy_flutter/shared/bloc_observer.dart';
 import 'package:udemy_flutter/shared/cubit/cubit.dart';
 import 'package:udemy_flutter/shared/cubit/states.dart';
 import 'package:udemy_flutter/shared/network/local/cash_helper.dart';
 import 'package:udemy_flutter/shared/network/remot/dio_helper.dart';
-import 'package:udemy_flutter/shared/themes.dart';
+import 'package:udemy_flutter/shared/components/styles/themes.dart';
 
 import 'layout/news_app/cubit/cubti.dart';
-import 'layout/news_app/cubit/states.dart';
-import 'layout/news_app/news_layout.dart';
 
 void main() async {
   //  make sure that every thing in the main finieshd then go to runapp
@@ -56,7 +51,7 @@ class MyApp extends StatelessWidget {
             theme: lightTheme,
             darkTheme: darkTheme,
             themeMode: cubit.isDark ? ThemeMode.dark : ThemeMode.light,
-            home: const NewsLayout(),
+            home: OnBoardingScreen(),
           );
         },
       ),
