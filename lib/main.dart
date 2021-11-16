@@ -10,7 +10,7 @@ import 'package:udemy_flutter/shared/cubit/cubit.dart';
 import 'package:udemy_flutter/shared/cubit/states.dart';
 import 'package:udemy_flutter/shared/network/local/cash_helper.dart';
 import 'package:udemy_flutter/shared/network/remot/dio_helper.dart';
-import 'package:udemy_flutter/shared/network/themes.dart';
+import 'package:udemy_flutter/shared/themes.dart';
 
 import 'layout/news_app/cubit/cubti.dart';
 import 'layout/news_app/cubit/states.dart';
