@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:udemy_flutter/shared/bloc_observer.dart';
+import 'package:udemy_flutter/shared/cubit/cubit.dart';
+import 'package:udemy_flutter/shared/cubit/states.dart';
 import 'package:udemy_flutter/shared/network/local/cash_helper.dart';
 import 'package:udemy_flutter/shared/network/remot/dio_helper.dart';
 
@@ -30,16 +32,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // bool isDark = NewsCubit.get(context).isDark;
 
-    return BlocProvider(
-      create: (BuildContext context) => NewsCubit()
-        ..dark(fromShared: isDark)
-        ..getBusiness()
-        ..getScience()
-        ..getSport(),
-      child: BlocConsumer<NewsCubit, NewsStates>(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AppCubit>(
+          create: (BuildContext context) =>
+              AppCubit()..dark(fromShared: isDark),
+        ),
+        BlocProvider<NewsCubit>(
+          create: (BuildContext context) => NewsCubit()
+            ..getBusiness()
+            ..getScience()
+            ..getSport(),
+        ),
+      ],
+      child: BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {},
         builder: (context, state) {
-          NewsCubit cubit = NewsCubit.get(context);
+          AppCubit cubit = AppCubit.get(context);
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: ThemeData(

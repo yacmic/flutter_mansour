@@ -13,7 +13,7 @@ class NewsCubit extends Cubit<NewsStates> {
 
   static NewsCubit get(context) => BlocProvider.of(context);
   int currentIndex = 0;
-  bool isDark = true;
+  //bool isDark = true;
   List<BottomNavigationBarItem> BottomItems = const [
     BottomNavigationBarItem(
       label: 'Business',
@@ -41,18 +41,18 @@ class NewsCubit extends Cubit<NewsStates> {
     emit(NewsBottomNavState());
   }
 
-  void dark({bool? fromShared}) {
-    if (fromShared != null) {
-      isDark = fromShared;
-      emit(NewsSharedPreferncesState());
-    } else {
-      isDark = !isDark;
-      CashHelper.putBoolean(key: 'isDark', value: isDark).then((value) {
-        emit(NewsSharedPreferncesState());
-      });
-      emit(NewsDarkThemeState());
-    }
-  }
+  // void dark({bool? fromShared}) {
+  //   if (fromShared != null) {
+  //     isDark = fromShared;
+  //     emit(NewsSharedPreferncesState());
+  //   } else {
+  //     isDark = !isDark;
+  //     CashHelper.putBoolean(key: 'isDark', value: isDark).then((value) {
+  //       emit(NewsSharedPreferncesState());
+  //     });
+  //     emit(NewsDarkThemeState());
+  //   }
+  // }
 
   List<dynamic> business = [];
   void getBusiness() {

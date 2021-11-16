@@ -6,6 +6,7 @@ import 'package:udemy_flutter/layout/news_app/cubit/cubti.dart';
 import 'package:udemy_flutter/layout/news_app/cubit/states.dart';
 import 'package:udemy_flutter/shared/components/components.dart';
 import 'package:udemy_flutter/shared/components/search/search_screen.dart';
+import 'package:udemy_flutter/shared/cubit/cubit.dart';
 
 import 'cubit/cubti.dart';
 
@@ -33,7 +34,7 @@ class NewsLayout extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  cubit.dark();
+                  AppCubit.get(context).dark();
                 },
                 icon: const Icon(Icons.brightness_4_outlined),
               ),

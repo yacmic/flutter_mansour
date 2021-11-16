@@ -6,6 +6,7 @@ import 'package:udemy_flutter/modules/todo_app/archived_tasks/archived_tasks_scr
 import 'package:udemy_flutter/modules/todo_app/done_tasks/done_tasks_screen.dart';
 import 'package:udemy_flutter/modules/todo_app/new_tasks/new_tasks_screen.dart';
 import 'package:udemy_flutter/shared/cubit/states.dart';
+import 'package:udemy_flutter/shared/network/local/cash_helper.dart';
 
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInittialState());
@@ -15,6 +16,8 @@ class AppCubit extends Cubit<AppStates> {
 
   var currentIndex = 0;
   bool isBottumSheetShown = false;
+
+  bool isDark = true;
 
   List<Map> newTasks = [];
   List<Map> doneTasks = [];
@@ -35,6 +38,19 @@ class AppCubit extends Cubit<AppStates> {
   void changeIndex(int index) {
     currentIndex = index;
     emit(AppChangeBottomNavBarState());
+  }
+
+  void dark({bool? fromShared}) {
+    if (fromShared != null) {
+      isDark = fromShared;
+      emit(AppSharedPreferncesState());
+    } else {
+      isDark = !isDark;
+      CashHelper.putBoolean(key: 'isDark', value: isDark).then((value) {
+        emit(AppSharedPreferncesState());
+      });
+      emit(AppDarkThemeState());
+    }
   }
 
   void createDatabase() {

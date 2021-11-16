@@ -19,3 +19,7 @@ class AppUpdateDatabaseState extends AppStates {}
 class AppDeleteDatabaseState extends AppStates {}
 
 class AppCHangeBottomSheetState extends AppStates {}
+
+class AppSharedPreferncesState extends AppStates {}
+
+class AppDarkThemeState extends AppStates {}
