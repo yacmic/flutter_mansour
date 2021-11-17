@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:udemy_flutter/modules/shop_app/login/login.dart';
+import 'package:udemy_flutter/modules/shop_app/login/shop_login_screen.dart';
 import 'package:udemy_flutter/shared/components/components.dart';
 import 'package:udemy_flutter/shared/components/styles/colors.dart';
 
@@ -39,11 +39,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     return Scaffold(
         appBar: AppBar(
           actions: [
-            TextButton(
-                onPressed: () {
-                  navigateAndFinish(context, const ShopLoginScreen());
-                },
-                child: const Text('Skip'))
+            defaultTextButton(
+              text: 'Skip',
+              function: () {
+                navigateAndFinish(context, ShopLoginScreen());
+              },
+            )
           ],
         ),
         body: Padding(
@@ -92,7 +93,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             duration: const Duration(milliseconds: 750),
                             curve: Curves.fastLinearToSlowEaseIn);
                       } else {
-                        navigateAndFinish(context, const ShopLoginScreen());
+                        navigateAndFinish(context, ShopLoginScreen());
                       }
                     },
                     child: Icon(Icons.arrow_forward_ios),

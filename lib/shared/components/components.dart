@@ -4,6 +4,17 @@ import 'package:flutter/rendering.dart';
 import 'package:udemy_flutter/modules/news_app/web_view/web_view_screen.dart';
 import 'package:udemy_flutter/shared/cubit/cubit.dart';
 
+Widget defaultTextButton({
+  required String text,
+  required Function function,
+}) =>
+    TextButton(
+      onPressed: () {
+        function();
+      },
+      child: Text(text),
+    );
+
 Widget defaultButton({
   double width = double.infinity,
   Color background = Colors.blue,
@@ -34,28 +45,46 @@ Widget defaultFormField({
   // required Function validate,
   required String text,
   required IconData prefix,
+  IconData? suffix,
+  Function? suffixFunction,
   required Function onTap,
   bool isClickable = true,
   Function? change,
+  bool isPassword = false,
+  String textForUnValid = 'this element is required',
 }) =>
     TextFormField(
+      //textAlignVertical: TextAlignVertical.bottom,
       enabled: isClickable,
       controller: controller,
       keyboardType: type,
-      // validator: (s) => validate(),
+      obscureText: isPassword ? true : false,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return textForUnValid;
+        }
+        return null;
+      },
       decoration: InputDecoration(
+        //contentPadding: const EdgeInsets.all(2),
         label: Text(text),
-        prefixIcon: Icon(prefix),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
+        prefixIcon: Icon(prefix), //suffixIcon: Icon(suffix),
+        suffixIcon: IconButton(
+          onPressed: () {
+            suffixFunction!();
+          },
+          icon: Icon(suffix),
+        ),
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+          borderSide: BorderSide(),
+          gapPadding: 4,
         ),
       ),
       onTap: () {
         onTap();
       },
-      onChanged: (s) {
-        change!(s);
-      },
+      onChanged: (value) {},
     );
 
 Widget buildTaskItem(Map model, context) => Dismissible(
