@@ -31,7 +31,7 @@ Widget defaultButton({
           isUpperCase ? text.toUpperCase() : text,
           style: const TextStyle(color: Colors.white),
         ),
-        onPressed: () => function,
+        onPressed: () => function(),
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius),
@@ -42,14 +42,15 @@ Widget defaultButton({
 Widget defaultFormField({
   required TextEditingController controller,
   required TextInputType type,
-  // required Function validate,
+  Function? validate,
   required String text,
   required IconData prefix,
   IconData? suffix,
   Function? suffixFunction,
-  required Function onTap,
+  Function? onTap,
   bool isClickable = true,
   Function? change,
+  Function? onSubmit,
   bool isPassword = false,
   String textForUnValid = 'this element is required',
 }) =>
@@ -65,6 +66,7 @@ Widget defaultFormField({
         }
         return null;
       },
+      onFieldSubmitted: (_) => onSubmit!(),
       decoration: InputDecoration(
         //contentPadding: const EdgeInsets.all(2),
         label: Text(text),
@@ -81,9 +83,9 @@ Widget defaultFormField({
           gapPadding: 4,
         ),
       ),
-      onTap: () {
-        onTap();
-      },
+      // onTap: () {
+      //   onTap!();
+      // },
       onChanged: (value) {},
     );
 
