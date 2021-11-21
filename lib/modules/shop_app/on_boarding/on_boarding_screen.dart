@@ -3,6 +3,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:udemy_flutter/modules/shop_app/login/shop_login_screen.dart';
 import 'package:udemy_flutter/shared/components/components.dart';
 import 'package:udemy_flutter/shared/components/styles/colors.dart';
+import 'package:udemy_flutter/shared/network/local/cash_helper.dart';
 
 class BoardingModel {
   final String image;
@@ -15,9 +16,6 @@ class BoardingModel {
     this.body,
   );
 }
-
-var boardController = PageController();
-bool isLast = false;
 
 class OnBoardingScreen extends StatefulWidget {
   @override
@@ -34,6 +32,15 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         'assets/images/onBoard_1.jpg', 'On Board 3 Ttitle', 'On Board body 3'),
   ];
 
+  var boardController = PageController();
+  bool isLast = false;
+
+  void submit() {
+    CashHelper.saveData(key: 'onBoarding', value: true).then((value) {
+      if (value!) navigateAndFinish(context, ShopLoginScreen());
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,9 +48,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           actions: [
             defaultTextButton(
               text: 'Skip',
-              function: () {
-                navigateAndFinish(context, ShopLoginScreen());
-              },
+              function: submit,
             )
           ],
         ),
@@ -93,7 +98,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             duration: const Duration(milliseconds: 750),
                             curve: Curves.fastLinearToSlowEaseIn);
                       } else {
-                        navigateAndFinish(context, ShopLoginScreen());
+                        submit();
                       }
                     },
                     child: Icon(Icons.arrow_forward_ios),

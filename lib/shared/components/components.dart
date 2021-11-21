@@ -1,8 +1,10 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:udemy_flutter/modules/news_app/web_view/web_view_screen.dart';
 import 'package:udemy_flutter/shared/cubit/cubit.dart';
+import 'package:udemy_flutter/shared/network/local/cash_helper.dart';
 
 Widget defaultTextButton({
   required String text,
@@ -224,3 +226,38 @@ void navigateAndFinish(context, widget) => Navigator.pushAndRemoveUntil(
       MaterialPageRoute(builder: (context) => widget),
       (Route<dynamic> route) => false,
     );
+
+///////////////////////////////////////
+void showToast({
+  required String? text,
+  required ToastStates state,
+}) =>
+    Fluttertoast.showToast(
+      msg: text!,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 1,
+      backgroundColor: chosseToastColor(state),
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+
+// enum
+enum ToastStates { SUCCESS, ERROR, WARNING }
+Color chosseToastColor(ToastStates state) {
+  Color color;
+  switch (state) {
+    case ToastStates.SUCCESS:
+      color = Colors.green;
+      break;
+    case ToastStates.ERROR:
+      color = Colors.red;
+      break;
+    case ToastStates.WARNING:
+      color = Colors.amber;
+      break;
+  }
+  return color;
+}
+
+//////// ////////////////////////////////////

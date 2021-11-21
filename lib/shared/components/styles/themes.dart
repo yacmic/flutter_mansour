@@ -9,13 +9,13 @@ ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: const AppBarTheme(
       titleSpacing: 20.0,
-
       //backwardsCompatibility: false,
       titleTextStyle: TextStyle(
           color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.bold),
       systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Colors.white,
-          statusBarIconBrightness: Brightness.dark),
+        statusBarColor: Colors.white,
+        statusBarIconBrightness: Brightness.dark,
+      ),
       backgroundColor: Colors.white,
       elevation: 0.0,
       iconTheme: IconThemeData(color: Colors.deepOrange)),
