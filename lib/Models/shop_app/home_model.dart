@@ -32,7 +32,8 @@ class HomeDataModel {
 
 class BannerModel {
   late int id;
-  late String image;
+  String image =
+      'https://previews.123rf.com/images/yummybuum/yummybuum1903/yummybuum190300026/121811230-empty-white-box-cardboard-cubic-cosmetic-box-blank-package-with-shadows-medicine-product-packaging-i.jpg';
 
   BannerModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -42,17 +43,18 @@ class BannerModel {
 
 class ProductModel {
   int? id;
-  dynamic? price;
-  dynamic? oldPrice;
-  dynamic? discount;
-  String? image;
-  String? name;
+  late dynamic price;
+  late dynamic oldPrice;
+  late dynamic discount;
+  String image =
+      'https://previews.123rf.com/images/yummybuum/yummybuum1903/yummybuum190300026/121811230-empty-white-box-cardboard-cubic-cosmetic-box-blank-package-with-shadows-medicine-product-packaging-i.jpg';
+  late String name;
   bool? in_favorite;
   bool? in_cart;
   ProductModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     price = json['price'];
-    oldPrice = json['oldPrice'];
+    oldPrice = json['old_price'];
     discount = json['discount'];
     image = json['image'];
     name = json['name'];

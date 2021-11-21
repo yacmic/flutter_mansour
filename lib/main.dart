@@ -22,8 +22,8 @@ void main() async {
   DioHelper.init();
   await CashHelper.init();
   bool? isDark = CashHelper.getData(key: 'isDark');
-  token = CashHelper.getData(key: 'token');
-  bool onBoarding = CashHelper.getData(key: 'onBoarding');
+  token = CashHelper.getData(key: 'token') ?? '0';
+  bool onBoarding = CashHelper.getData(key: 'onBoarding') ?? false;
   Widget widget;
 
   if (onBoarding != null) {
